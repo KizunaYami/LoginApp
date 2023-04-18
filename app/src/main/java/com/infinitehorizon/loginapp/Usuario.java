@@ -16,4 +16,12 @@ public class Usuario {
     public String getPassword() {
         return password;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "user='" + user + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }
