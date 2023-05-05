@@ -76,9 +76,5 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickListarUsuarios(View view) {
-
-        Intent intent = new Intent(this,ListActivity.class);
-        intent.putExtra("key",usuarios);
-        startActivity(intent);
     }
 }
