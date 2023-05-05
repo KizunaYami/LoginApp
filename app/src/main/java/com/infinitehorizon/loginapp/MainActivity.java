@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    ArrayList<Usuario> usuarios = new ArrayList<>();
+    ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 
     public void onClickLogin(View view) {//conferindo usuario e senha
         EditText user = findViewById(R.id.userInput);
@@ -72,5 +73,12 @@ public class MainActivity extends AppCompatActivity {
         }
         user.setText("");
         password.setText("");
+    }
+
+    public void onClickListarUsuarios(View view) {
+
+        Intent intent = new Intent(this,ListActivity.class);
+        intent.putExtra("key",usuarios);
+        startActivity(intent);
     }
 }
