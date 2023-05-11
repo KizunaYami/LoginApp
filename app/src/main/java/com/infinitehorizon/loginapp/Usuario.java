@@ -1,6 +1,8 @@
 package com.infinitehorizon.loginapp;
 
-public class Usuario {
+import java.io.Serializable;
+
+public class Usuario implements Serializable {
     private final String user;
     private final String password;
 
