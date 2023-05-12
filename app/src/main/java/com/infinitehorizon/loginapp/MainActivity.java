@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -76,5 +75,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickListarUsuarios(View view) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("userKey", usuarios);
+
+        Intent intent = new Intent(this, ListActivity.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }
