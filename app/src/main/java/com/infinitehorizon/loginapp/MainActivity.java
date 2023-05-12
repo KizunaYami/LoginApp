@@ -11,14 +11,16 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+    DBUsuario dbUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
 
-    ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+        dbUsuario = new DBUsuario(this);
+    }
 
     public void onClickLogin(View view) {//conferindo usuario e senha
         EditText user = findViewById(R.id.userInput);
@@ -67,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         if(usuario.equals("") || senha.equals("")){
             Toast.makeText(this, "Digite usuario e senha validos", Toast.LENGTH_LONG).show();
         }else{
-            usuarios.add(new Usuario(usuario,senha));
+            dbUsuario.add(new Usuario(usuario,senha));
             Toast.makeText(this, "Cadastrado com sucesso", Toast.LENGTH_LONG).show();
         }
         user.setText("");
