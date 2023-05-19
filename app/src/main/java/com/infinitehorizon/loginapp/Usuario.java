@@ -3,8 +3,8 @@ package com.infinitehorizon.loginapp;
 import java.io.Serializable;
 
 public class Usuario implements Serializable {
-    private final String user;
-    private final String password;
+    private String user;
+    private String password;
 
     public Usuario(String u, String p){
         this.user = u;
