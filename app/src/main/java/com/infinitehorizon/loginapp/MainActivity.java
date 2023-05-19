@@ -11,7 +11,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+    //ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
     DBUsuario dbUsuario;
 
     @Override
@@ -29,9 +29,9 @@ public class MainActivity extends AppCompatActivity {
         String usuario = user.getText().toString();
         String senha = password.getText().toString();
 
-        if(usuarios.size() != 0){//conferindo se o arraylist esta vazio
-            for (int i = 1; i <= usuarios.size(); i++){//Percorrendo o arraylist procurando por usuario e senha validos
-                if(usuario.equals(usuarios.get(i-1).getUser()) && senha.equals(usuarios.get(i-1).getPassword())){
+        if(dbUsuario.getList().size() != 0){//conferindo se o arraylist esta vazio
+            for (int i = 1; i <= dbUsuario.getList().size(); i++){//Percorrendo o arraylist procurando por usuario e senha validos
+                if(usuario.equals(dbUsuario.getList().get(i-1).getUser()) && senha.equals(dbUsuario.getList().get(i-1).getPassword())){
                     //usuario e senha confere com o arraylist
                     Toast.makeText(this,"Sucesso no login",Toast.LENGTH_SHORT).show();
 
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                     user.setText("");
                     password.setText("");
                     break;
-                }else if(i == usuarios.size()){
+                }else if(i == dbUsuario.getList().size()){
                     //nenhum usuario e senha confere com o arraylist
                     Toast.makeText(this,"Usuario ou senha invalido",Toast.LENGTH_LONG).show();
                     user.setText("");
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickListarUsuarios(View view) {
         Bundle bundle = new Bundle();
-        bundle.putSerializable("userKey", usuarios);
+        bundle.putSerializable("userKey", dbUsuario.getList());
 
         Intent intent = new Intent(this, ListActivity.class);
         intent.putExtras(bundle);
