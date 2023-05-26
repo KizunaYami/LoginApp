@@ -33,6 +33,11 @@ public class DBUsuario extends SQLiteOpenHelper {
 
     }
 
+    public void remove(String user){
+        String sql = "DELETE FROM `usuarios` WHERE user = '"+user+"'";
+        getWritableDatabase().execSQL(sql);
+    }
+
     public void add(Usuario usuario){
         ContentValues contentValues = new ContentValues();
         contentValues.put("user", usuario.getUser());
