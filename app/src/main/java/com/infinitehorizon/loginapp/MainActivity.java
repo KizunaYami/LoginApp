@@ -8,10 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity {
-    //ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
     DBUsuario dbUsuario;
 
     @Override
@@ -29,10 +26,10 @@ public class MainActivity extends AppCompatActivity {
         String usuario = user.getText().toString();
         String senha = password.getText().toString();
 
-        if(dbUsuario.getList().size() != 0){//conferindo se o arraylist esta vazio
+        if(dbUsuario.getList().size() != 0){//conferindo se o banco esta vazio
             for (int i = 1; i <= dbUsuario.getList().size(); i++){//Percorrendo o arraylist procurando por usuario e senha validos
                 if(usuario.equals(dbUsuario.getList().get(i-1).getUser()) && senha.equals(dbUsuario.getList().get(i-1).getPassword())){
-                    //usuario e senha confere com o arraylist
+                    //usuario e senha confere com o banco
                     Toast.makeText(this,"Sucesso no login",Toast.LENGTH_SHORT).show();
 
                     Bundle bundle = new Bundle();
@@ -46,13 +43,13 @@ public class MainActivity extends AppCompatActivity {
                     password.setText("");
                     break;
                 }else if(i == dbUsuario.getList().size()){
-                    //nenhum usuario e senha confere com o arraylist
+                    //nenhum usuario e senha confere com o banco
                     Toast.makeText(this,"Usuario ou senha invalido",Toast.LENGTH_LONG).show();
                     user.setText("");
                     password.setText("");
                 }
             }
-        }else{//Caso o arraylist esteja vazio
+        }else{//Caso o banco esteja vazio
             Toast.makeText(this,"Usuario ou senha invalido",Toast.LENGTH_LONG).show();
             user.setText("");
             password.setText("");
@@ -82,6 +79,11 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, ListActivity.class);
         intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    public void onClickDeletarUsuario(View view) {
+        Intent intent = new Intent(this, DeletarUsuarioActivity.class);
         startActivity(intent);
     }
 }
